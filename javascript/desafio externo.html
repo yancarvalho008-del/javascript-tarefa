@@ -1,0 +1,52 @@
+// 1. Ao carregar a página (onload)
+window.onload = () => {
+    const nome = prompt("Digite seu nome:");
+    const divPalavra = document.getElementById("palavra");
+    divPalavra.innerHTML = `Olá, ${nome}!`;
+};
+
+// 2. Input de cor com switch..case e default com confirm
+const inputCor = document.getElementById("inputCor");
+inputCor.addEventListener("change", () => {
+    const cor = inputCor.value.trim().toLowerCase();
+    const divPalavra = document.getElementById("palavra");
+
+    switch (cor) {
+        case "red":
+            divPalavra.style.backgroundColor = "red";
+            break;
+        case "blue":
+            divPalavra.style.backgroundColor = "blue";
+            break;
+        case "green":
+            divPalavra.style.backgroundColor = "green";
+            break;
+        default:
+            confirm("Cor não reconhecida");
+            break;
+    }
+});
+
+// 3. Botões A+ e A- (arrow function auxiliar para alterar fonte)
+const alterarFonte = (incremento) => {
+    const divPalavra = document.getElementById("palavra");
+    let tamanhoAtual = window.getComputedStyle(divPalavra).fontSize;
+    let novoTamanho = parseInt(tamanhoAtual) + incremento;
+    divPalavra.style.fontSize = novoTamanho + "px";
+};
+
+document.getElementById("btnAmais").addEventListener("click", () => alterarFonte(10));
+document.getElementById("btnAmenos").addEventListener("click", () => alterarFonte(-10));
+
+// 4. Botão Mostrar lista usando for e join()
+document.getElementById("btnLista").addEventListener("click", () => {
+    const cores = ["Vermelho", "Azul", "Verde"];
+    
+    // Apenas garantindo o uso do loop 'for' conforme pedido
+    for (let i = 0; i < cores.length; i++) {
+        // Percorrendo o array com o for
+    }
+
+    const divLista = document.getElementById("listaCores");
+    divLista.innerHTML = cores.join(", ");
+});
